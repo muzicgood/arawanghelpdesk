@@ -34,10 +34,19 @@ if(isset($_POST['pressme'])){
             <th>desc</th>
             <th>grade</th>
             <th>image</th>
+            <th>edit</th>
             <?php 
                 $data = view_itdata();
                 foreach($data as $it){
-                    echo "<tr> <td>".$it->name."</td><td>".$it->desc."</td><td>".$it->grade."</td><td>".$it->Image."</td></tr>";
+                    echo "<tr> <td>".$it->name.
+                    "</td><td>".$it->desc.
+                    "</td><td>".$it->grade.
+                    "</td><td>".$it->Image.
+                    "</td><td>
+                    <a href='/arawanghelpdesk/edit.php?id=".$it->id." '>Edit</a>
+                    <a href='/arawanghelpdesk/edit.php?id=".$it->id."&delcon=true'>Delete</a>
+                    
+                    </td></tr>";
                     
                 }
             
