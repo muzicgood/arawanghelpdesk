@@ -3,6 +3,7 @@ $host = "localhost";
 $user = "root";
 $password = "";
 $dbname = "arawangdb";
+session_start();
 
 // Set DSN
 $dsn = 'mysql:host='.$host.';dbname='.$dbname;
@@ -25,6 +26,17 @@ function get_data($sql){
         return "Something went wrong";
     }
     
+}
+
+function check_active($url){
+
+    echo'<script>';
+    echo'function act(){const elem = document.getElementById("'.$url.'");';
+    echo'elem.className ="nav-link active";}';
+    echo'act()';
+    echo '</script>';
+
+
 }
 
 

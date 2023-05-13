@@ -1,5 +1,6 @@
 <?php
 include 'api/base.php';
+$_SESSION['current']='home';
 include_once 'api/get_ithelp/ithelpcontrol.php';
 $sql = "Select * from users";
 $data = get_data($sql);
@@ -13,16 +14,10 @@ if(isset($_POST['pressme'])){
 }
 
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-</head>
+<?php include_once'nav.php';?>
+<title> Home </title>
 <body>
-    <?php include_once'nav.html';?>
+    
     <p>
         <form method="post">
         <button type="submit" name="pressme"> Press Me</button>
