@@ -2,15 +2,15 @@
 
 
 
-function insert_data($name, $desc, $grade, $image){
+function insert_data($id, $name, $desc, $grade, $image){
     global $pdo;
     
-    $sql = "INSERT INTO ittable (`name`, `desc`, `grade`, `Image`) VALUES (:name,:desc, :grade, :image)";
+    $sql = "INSERT INTO ittable (`id`,`name`, `desc`, `grade`, `Image`) VALUES (:id, :name,:desc, :grade, :image)";
     echo $sql;
     $stmt = $pdo->prepare($sql);
-    $stmt->execute(['name' => $name, 'desc' => $desc, 'grade'=> $grade, 'image' => $image]);
+    $stmt->execute(['id'=> $id,'name' => $name, 'desc' => $desc, 'grade'=> $grade, 'image' => $image]);
     
-    header('Location: http://localhost');
+    header('Location: /');
 
 }
 
@@ -39,7 +39,7 @@ function edit_data($id, $name, $desc, $grade, $image){
     $stmt = $pdo->prepare($sql);
 
     $stmt->execute(['name' => $name, 'desc' => $desc, 'grade'=> $grade, 'image' => $image, 'id'=> $id]);
-    header('Location: http://localhost');
+    header('Location: /');
     
 }
 
@@ -48,7 +48,7 @@ function delete_data($id){
     $sql= "DELETE FROM ittable where `id`= :id";
     $stmt = $pdo->prepare($sql);
     $stmt->execute(['id'=>$id]);
-    header('Location: http://localhost');
+    header('Location: /');
     
     
     

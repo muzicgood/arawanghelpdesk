@@ -5,12 +5,19 @@ include_once 'api/get_ithelp/ithelpcontrol.php';
 $sql = "Select * from users";
 $data = get_data($sql);
 
+if(array_key_exists('lp',$_GET)){
+    session_destroy();
+    header('Location:/');
+}
+
+
 if(isset($_POST['pressme'])){
+    $id = getGUID();
     $name ='Sangit';
     $desc='the chromebook';
     $grade= '3Dd';
     $image='test';
-    insert_data($name,$desc,$grade,$image);
+    insert_data($id,$name,$desc,$grade,$image);
 }
 
 ?>
@@ -37,11 +44,19 @@ if(isset($_POST['pressme'])){
                     "</td><td>".$it->desc.
                     "</td><td>".$it->grade.
                     "</td><td>".$it->Image.
-                    "</td><td>
-                    <a href='/arawanghelpdesk/edit.php?id=".$it->id." '>Edit</a>
-                    <a href='/arawanghelpdesk/edit.php?id=".$it->id."&delcon=true'>Delete</a>
+                    "</td><td>";
+                    if(array_key_exists('logedin',$_SESSION)){
+                        if($_SESSION['logedin']){
+                            echo "<a href='/arawanghelpdesk/edit.php?id=".$it->id." '>Edit</a>
+                            <a href='/arawanghelpdesk/edit.php?id=".$it->id."&delcon=true'>Delete</a>";
+                        }
+                    }
+                    else{
+                        echo'Login for edit';
+                    }
                     
-                    </td></tr>";
+                    
+                    echo"</td></tr>";
                     
                 }
             

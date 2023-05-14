@@ -38,11 +38,12 @@ include'nav.php';
 
 <?php 
     if(isset($_POST['create'])){
+        $id = getGUID();
         $name =$_POST['name'];
     $desc=$_POST['desc'];
     $grade= $_POST['grade'];
     $image=$_POST['image'];
-    insert_data($name,$desc,$grade,$image);
+    insert_data($id,$name,$desc,$grade,$image);
     }
 
 ?>

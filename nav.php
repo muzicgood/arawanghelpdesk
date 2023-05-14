@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,9 +12,15 @@
         <li class="nav-item" ><a class="nav-link" id="ticket" href="/arawanghelpdesk/create.php">Submit a ticket</a></li>
         
         <?php 
-        if($_SESSION){
+        if(array_key_exists('logedin',$_SESSION)){
+            echo '<li class="nav-item"><a class="nav-link" id="logout" href="/arawanghelpdesk/index.php?lp=true">Logout</a></li>';
+            
+        }
+        else{
             echo '<li class="nav-item"><a class="nav-link" id="login" href="/arawanghelpdesk/login.php">Login</a></li>';
             echo '<li class="nav-item" ><a class="nav-link" id="register" href="/arawanghelpdesk/register.php">Register</a></li>';
+            
+            
         }
         ?>
     </ul>
